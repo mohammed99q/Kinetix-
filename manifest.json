@@ -1,26 +1,26 @@
 {
-  "name": "Kinetix Pro",
-  "short_name": "Kinetix",
-  "id": "com.kinetix.pro",
-  "description": "منصة علوم رياضية الاحترافية للأداء العالي.",
+  "name": "Sport Science Pro",
+  "short_name": "SportScience",
+  "id": "com.sportscience.pro",
+  "description": "المنصة المتطورة لعلوم الرياضة والأداء البدني.",
   "start_url": "/?mode=app",
   "display": "fullscreen",
   "background_color": "#020617",
-  "theme_color": "#020617",
+  "theme_color": "#3b82f6",
   "orientation": "portrait",
   "dir": "rtl",
   "lang": "ar",
   "icons": [
     {
-      "src": "https://api.dicebear.com/7.x/shapes/svg?seed=kinetix&backgroundColor=2563eb&shape1Color=ffffff",
+      "src": "https://api.dicebear.com/7.x/shapes/png?seed=sportpro&backgroundColor=020617&shape1Color=3b82f6",
       "sizes": "192x192",
-      "type": "image/svg+xml",
+      "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "https://api.dicebear.com/7.x/shapes/svg?seed=kinetix&backgroundColor=2563eb&shape1Color=ffffff",
+      "src": "https://api.dicebear.com/7.x/shapes/png?seed=sportpro&backgroundColor=020617&shape1Color=3b82f6",
       "sizes": "512x512",
-      "type": "image/svg+xml",
+      "type": "image/png",
       "purpose": "any"
     }
   ]

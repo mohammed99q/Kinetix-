@@ -14,7 +14,7 @@ const data: TrainingMetric[] = [
 ];
 
 export const Dashboard: React.FC = () => {
-  const [userName, setUserName] = useState('الرياضي');
+  const [userName, setUserName] = useState('أيها البطل');
 
   useEffect(() => {
     const savedProfile = localStorage.getItem('userProfile');
@@ -28,113 +28,87 @@ export const Dashboard: React.FC = () => {
     <div className="space-y-8">
       <header className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-800/60 pb-6 animate-slide-up">
         <div>
-            <h2 className="text-4xl font-bold text-white mb-2 tracking-tight">
-                مرحباً، <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">{userName}</span> 👋
+            <h2 className="text-4xl font-black text-white mb-2 tracking-tighter">
+                مرحباً، <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">{userName}</span>
             </h2>
-            <p className="text-slate-400 text-lg">نظرة شاملة على أدائك البدني.</p>
+            <p className="text-slate-400 text-lg font-medium">تحليلات الأداء العلمي ليومك التدريبي.</p>
         </div>
-        <div className="bg-slate-800/50 px-4 py-2 rounded-xl border border-slate-700/50 flex items-center gap-2 text-slate-300 backdrop-blur-sm shadow-sm">
+        <div className="bg-slate-800/50 px-4 py-2 rounded-xl border border-white/5 flex items-center gap-2 text-slate-300 backdrop-blur-sm shadow-sm">
             <CalendarDays className="w-4 h-4 text-blue-400" />
-            <span>{new Date().toLocaleDateString('ar-EG', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            <span className="text-sm font-bold tracking-tight">{new Date().toLocaleDateString('ar-EG', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span>
         </div>
       </header>
 
       {/* KPI Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div className="group bg-slate-800/40 p-6 rounded-3xl border border-slate-700/50 hover:border-blue-500/30 hover:bg-slate-800/60 transition-all duration-300 backdrop-blur-sm relative overflow-hidden animate-slide-up delay-100">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-indigo-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        <div className="group bg-slate-800/30 p-5 rounded-3xl border border-white/5 hover:border-blue-500/30 hover:bg-slate-800/60 transition-all duration-300 backdrop-blur-sm relative overflow-hidden animate-slide-up">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-slate-400 font-medium">الحمل التدريبي</h3>
-            <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
-                <Activity className="text-blue-500 w-5 h-5" />
-            </div>
+            <h3 className="text-slate-500 font-bold text-xs uppercase tracking-widest">الحمل</h3>
+            <Activity className="text-blue-500 w-4 h-4" />
           </div>
-          <p className="text-3xl font-bold text-white mb-1">850 <span className="text-sm font-normal text-slate-500">A.U.</span></p>
-          <div className="text-sm text-green-400 flex items-center font-medium bg-green-500/10 w-fit px-2 py-1 rounded-lg border border-green-500/20">
+          <p className="text-2xl font-black text-white mb-1">850</p>
+          <div className="text-[10px] text-green-400 font-bold flex items-center">
             <TrendingUp className="w-3 h-3 ml-1" /> +12% تحسن
           </div>
         </div>
 
-        <div className="group bg-slate-800/40 p-6 rounded-3xl border border-slate-700/50 hover:border-yellow-500/30 hover:bg-slate-800/60 transition-all duration-300 backdrop-blur-sm relative overflow-hidden animate-slide-up delay-200">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-500 to-orange-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+        <div className="group bg-slate-800/30 p-5 rounded-3xl border border-white/5 hover:border-yellow-500/30 hover:bg-slate-800/60 transition-all duration-300 backdrop-blur-sm relative overflow-hidden animate-slide-up delay-100">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-slate-400 font-medium">الجاهزية</h3>
-            <div className="w-10 h-10 rounded-full bg-yellow-500/10 flex items-center justify-center group-hover:bg-yellow-500/20 transition-colors">
-                <Zap className="text-yellow-500 w-5 h-5" />
-            </div>
+            <h3 className="text-slate-500 font-bold text-xs uppercase tracking-widest">الجاهزية</h3>
+            <Zap className="text-yellow-500 w-4 h-4" />
           </div>
-          <p className="text-3xl font-bold text-white mb-1">92%</p>
-          <div className="text-sm text-slate-400">
-            حالة بدنية ممتازة للأحمال العالية
-          </div>
+          <p className="text-2xl font-black text-white mb-1">92%</p>
+          <div className="text-[10px] text-slate-500 font-bold">حالة بدنية مثالية</div>
         </div>
 
-        <div className="group bg-slate-800/40 p-6 rounded-3xl border border-slate-700/50 hover:border-green-500/30 hover:bg-slate-800/60 transition-all duration-300 backdrop-blur-sm relative overflow-hidden animate-slide-up delay-300">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-500 to-emerald-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+        <div className="group bg-slate-800/30 p-5 rounded-3xl border border-white/5 hover:border-green-500/30 hover:bg-slate-800/60 transition-all duration-300 backdrop-blur-sm relative overflow-hidden animate-slide-up delay-150">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-slate-400 font-medium">الاستشفاء</h3>
-            <div className="w-10 h-10 rounded-full bg-green-500/10 flex items-center justify-center group-hover:bg-green-500/20 transition-colors">
-                <Battery className="text-green-500 w-5 h-5" />
-            </div>
+            <h3 className="text-slate-500 font-bold text-xs uppercase tracking-widest">الاستشفاء</h3>
+            <Battery className="text-green-500 w-4 h-4" />
           </div>
-          <p className="text-3xl font-bold text-white mb-1">8.5<span className="text-lg text-slate-500">/10</span></p>
-          <div className="text-sm text-slate-400">
-            جودة النوم: <span className="text-white">ممتازة</span>
-          </div>
+          <p className="text-2xl font-black text-white mb-1">8.5</p>
+          <div className="text-[10px] text-slate-500 font-bold">جودة النوم: ممتازة</div>
         </div>
 
-         <div className="group bg-slate-800/40 p-6 rounded-3xl border border-slate-700/50 hover:border-indigo-500/30 hover:bg-slate-800/60 transition-all duration-300 backdrop-blur-sm relative overflow-hidden animate-slide-up delay-400">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-purple-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+         <div className="group bg-slate-800/30 p-5 rounded-3xl border border-white/5 hover:border-indigo-500/30 hover:bg-slate-800/60 transition-all duration-300 backdrop-blur-sm relative overflow-hidden animate-slide-up delay-200">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-slate-400 font-medium">البيانات الشخصية</h3>
-             <div className="w-10 h-10 rounded-full bg-indigo-500/10 flex items-center justify-center group-hover:bg-indigo-500/20 transition-colors">
-                <User className="text-indigo-500 w-5 h-5" />
-            </div>
+            <h3 className="text-slate-500 font-bold text-xs uppercase tracking-widest">المستوى</h3>
+            <User className="text-indigo-500 w-4 h-4" />
           </div>
-          <p className="text-xl font-bold text-white mb-1">مُحدثة</p>
-          <div className="text-sm text-slate-400">
-             تم تحديث القياسات مؤخراً
-          </div>
+          <p className="text-2xl font-black text-white mb-1">مُتقدم</p>
+          <div className="text-[10px] text-slate-500 font-bold">تم التحديث اليوم</div>
         </div>
       </div>
 
       {/* Charts Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8 animate-slide-up delay-300">
-        <div className="bg-slate-800/40 p-6 rounded-3xl border border-slate-700/50 backdrop-blur-md shadow-xl h-[450px] transition-transform hover:scale-[1.01] duration-500">
-          <h3 className="text-xl font-bold text-white mb-8 border-r-4 border-blue-500 pr-3">الحمل التدريبي vs الاستشفاء</h3>
-          <ResponsiveContainer width="100%" height="85%">
-            <LineChart data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#334155" vertical={false} opacity={0.5} />
-              <XAxis dataKey="day" stroke="#94a3b8" axisLine={false} tickLine={false} dy={10} tick={{fontSize: 12}} />
-              <YAxis stroke="#94a3b8" axisLine={false} tickLine={false} dx={-10} tick={{fontSize: 12}} />
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8 animate-slide-up">
+        <div className="bg-slate-800/40 p-6 rounded-3xl border border-white/5 backdrop-blur-md shadow-xl h-[400px]">
+          <h3 className="text-lg font-black text-white mb-8 border-r-4 border-blue-500 pr-3 uppercase tracking-tighter">الحمل vs الاستشفاء</h3>
+          <ResponsiveContainer width="100%" height="80%">
+            <LineChart data={data}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#ffffff" vertical={false} opacity={0.05} />
+              <XAxis dataKey="day" stroke="#64748b" axisLine={false} tickLine={false} dy={10} tick={{fontSize: 10, fontWeight: 'bold'}} />
+              <YAxis hide />
               <Tooltip 
-                contentStyle={{ backgroundColor: '#0f172a', border: '1px solid #334155', borderRadius: '12px', color: '#f8fafc', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.5)' }}
-                itemStyle={{ padding: '2px 0' }}
+                contentStyle={{ backgroundColor: '#0f172a', border: '1px solid #1e293b', borderRadius: '12px', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.5)' }}
               />
-              <Line type="monotone" dataKey="load" stroke="#3b82f6" strokeWidth={4} dot={{r: 4, strokeWidth: 2, fill:'#0f172a'}} activeDot={{r: 6, strokeWidth: 0}} name="الحمل" animationDuration={1500} />
-              <Line type="monotone" dataKey="recovery" stroke="#10b981" strokeWidth={4} dot={{r: 4, strokeWidth: 2, fill:'#0f172a'}} activeDot={{r: 6, strokeWidth: 0}} name="الاستشفاء" animationDuration={1500} />
+              <Line type="monotone" dataKey="load" stroke="#3b82f6" strokeWidth={4} dot={false} animationDuration={1000} />
+              <Line type="monotone" dataKey="recovery" stroke="#10b981" strokeWidth={4} dot={false} animationDuration={1000} />
             </LineChart>
           </ResponsiveContainer>
         </div>
 
-        <div className="bg-slate-800/40 p-6 rounded-3xl border border-slate-700/50 backdrop-blur-md shadow-xl h-[450px] transition-transform hover:scale-[1.01] duration-500">
-          <h3 className="text-xl font-bold text-white mb-8 border-r-4 border-purple-500 pr-3">مؤشر الجاهزية اليومي</h3>
-          <ResponsiveContainer width="100%" height="85%">
-            <BarChart data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#334155" vertical={false} opacity={0.5} />
-              <XAxis dataKey="day" stroke="#94a3b8" axisLine={false} tickLine={false} dy={10} tick={{fontSize: 12}} />
-              <YAxis stroke="#94a3b8" axisLine={false} tickLine={false} dx={-10} tick={{fontSize: 12}} />
+        <div className="bg-slate-800/40 p-6 rounded-3xl border border-white/5 backdrop-blur-md shadow-xl h-[400px]">
+          <h3 className="text-lg font-black text-white mb-8 border-r-4 border-yellow-500 pr-3 uppercase tracking-tighter">مؤشر الجاهزية</h3>
+          <ResponsiveContainer width="100%" height="80%">
+            <BarChart data={data}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#ffffff" vertical={false} opacity={0.05} />
+              <XAxis dataKey="day" stroke="#64748b" axisLine={false} tickLine={false} dy={10} tick={{fontSize: 10, fontWeight: 'bold'}} />
               <Tooltip 
-                cursor={{fill: 'rgba(255,255,255,0.05)'}}
-                contentStyle={{ backgroundColor: '#0f172a', border: '1px solid #334155', borderRadius: '12px', color: '#f8fafc', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.5)' }}
+                cursor={{fill: 'rgba(255,255,255,0.03)'}}
+                contentStyle={{ backgroundColor: '#0f172a', border: '1px solid #1e293b', borderRadius: '12px' }}
               />
-              <defs>
-                <linearGradient id="colorReadiness" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.8}/>
-                  <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0}/>
-                </linearGradient>
-              </defs>
-              <Bar dataKey="readiness" fill="url(#colorReadiness)" radius={[8, 8, 0, 0]} name="الجاهزية" animationDuration={1500} />
+              <Bar dataKey="readiness" fill="#6366f1" radius={[6, 6, 0, 0]} animationDuration={1000} />
             </BarChart>
           </ResponsiveContainer>
         </div>
