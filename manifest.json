@@ -3,13 +3,15 @@
   "short_name": "Kinetix",
   "id": "com.kinetix.pro",
   "description": "منصة Kinetix Pro المتقدمة لعلوم الرياضة والأداء البدني الاحترافي.",
-  "start_url": "/?mode=app",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#020617",
   "theme_color": "#3b82f6",
   "orientation": "portrait",
   "dir": "rtl",
   "lang": "ar",
+  "prefer_related_applications": false,
   "icons": [
     {
       "src": "https://www.pwabuilder.com/assets/icons/icon_192.png",
