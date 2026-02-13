@@ -1,8 +1,9 @@
 {
   "name": "Kinetix Performance",
   "short_name": "Kinetix",
+  "id": "kinetix-performance-v1",
   "description": "منصة علوم رياضية متكاملة تعمل بدون إنترنت للتحليل الحركي والتمارين المنزلية.",
-  "start_url": "/",
+  "start_url": ".",
   "display": "standalone",
   "background_color": "#0f172a",
   "theme_color": "#3b82f6",
@@ -12,7 +13,7 @@
   "icons": [
     {
       "src": "https://cdn-icons-png.flaticon.com/512/3048/3048344.png",
-      "sizes": "192x192",
+      "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
@@ -26,13 +27,13 @@
   "shortcuts": [
     {
       "name": "التمارين المنزلية",
-      "url": "/?view=HOME_WORKOUTS",
-      "icons": [{ "src": "https://cdn-icons-png.flaticon.com/512/3048/3048344.png", "sizes": "192x192" }]
+      "url": "?view=HOME_WORKOUTS",
+      "icons": [{ "src": "https://cdn-icons-png.flaticon.com/512/3048/3048344.png", "sizes": "512x512", "type": "image/png" }]
     },
     {
       "name": "المستشار الرياضي",
-      "url": "/?view=AI_COACH",
-      "icons": [{ "src": "https://cdn-icons-png.flaticon.com/512/3048/3048344.png", "sizes": "192x192" }]
+      "url": "?view=AI_COACH",
+      "icons": [{ "src": "https://cdn-icons-png.flaticon.com/512/3048/3048344.png", "sizes": "512x512", "type": "image/png" }]
     }
   ],
   "screenshots": [
