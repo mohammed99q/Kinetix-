@@ -1,6 +1,6 @@
 import React from 'react';
 import { AppView } from '../types';
-import { LayoutDashboard, MessageSquare, Camera, Home, UserCircle, Activity } from 'lucide-react';
+import { LayoutDashboard, MessageSquare, Camera, Home, UserCircle, Code } from 'lucide-react';
 
 interface LayoutProps {
   currentView: AppView;
@@ -26,19 +26,28 @@ export const Layout: React.FC<LayoutProps> = ({ currentView, setView, children }
             <span className="text-white font-black italic text-lg">K</span>
           </div>
           <div className="flex flex-col">
-            <span className="font-black text-2xl text-white tracking-tighter leading-none italic uppercase">KINETIX</span>
-            <span className="text-[10px] text-blue-400 font-bold tracking-[0.25em] uppercase mt-0.5">Professional Pro</span>
+            <span className="font-black text-xl text-white tracking-tighter leading-none italic uppercase">KINETIX PRO</span>
+            <span className="text-[10px] text-blue-400 font-bold tracking-[0.25em] uppercase mt-0.5">By Mohammed Alyasar</span>
           </div>
         </div>
-        <div className="w-10 h-10 rounded-2xl bg-slate-900 border border-white/5 overflow-hidden p-0.5 shadow-inner">
-           <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=KinetixUser" alt="profile" className="w-full h-full rounded-[0.8rem] object-cover bg-slate-800" />
+        <div className="w-10 h-10 rounded-2xl bg-slate-900 border border-white/5 overflow-hidden p-0.5 shadow-inner flex items-center justify-center">
+           <Code className="w-5 h-5 text-blue-500" />
         </div>
       </header>
 
       {/* Content Area */}
-      <main className="flex-1 scroll-container custom-scrollbar pb-32">
+      <main className="flex-1 scroll-container custom-scrollbar pb-36">
         <div className="max-w-4xl mx-auto p-5">
           {children}
+          
+          <footer className="mt-12 mb-8 border-t border-white/5 pt-6 text-center">
+            <p className="text-slate-600 text-[10px] font-bold uppercase tracking-widest">
+              Built with Passion for Performance
+            </p>
+            <p className="text-blue-500/50 text-[11px] font-black mt-1">
+              © 2025 Mohammed Alyasar
+            </p>
+          </footer>
         </div>
       </main>
 

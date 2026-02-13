@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
-import { Activity, Zap, Battery, TrendingUp, CalendarDays, User, Microscope, Info } from 'lucide-react';
+import { Activity, Zap, Battery, TrendingUp, CalendarDays, Code, Info } from 'lucide-react';
 import { TrainingMetric } from '../types';
 
 const data: TrainingMetric[] = [
@@ -14,28 +14,18 @@ const data: TrainingMetric[] = [
 ];
 
 export const Dashboard: React.FC = () => {
-  const [userName, setUserName] = useState('أيها البطل');
-
-  useEffect(() => {
-    const savedProfile = localStorage.getItem('userProfile');
-    if (savedProfile) {
-        const profile = JSON.parse(savedProfile);
-        if (profile.name) setUserName(profile.name);
-    }
-  }, []);
-
   return (
     <div className="space-y-8 pb-10">
       <header className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/10 pb-6 animate-slide-up">
         <div>
             <div className="flex items-center gap-2 mb-1">
-                <Microscope className="w-4 h-4 text-blue-500" />
-                <span className="text-blue-500 font-black text-xs uppercase tracking-widest">Sport Science Lab</span>
+                <Code className="w-4 h-4 text-blue-500" />
+                <span className="text-blue-500 font-black text-xs uppercase tracking-widest">Lead Developer Station</span>
             </div>
-            <h2 className="text-4xl font-black text-white mb-2 tracking-tighter">
-                مرحباً، <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">{userName}</span>
+            <h2 className="text-4xl font-black text-white mb-2 tracking-tighter uppercase italic">
+                مرحباً بك في <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Kinetix Pro</span>
             </h2>
-            <p className="text-slate-400 text-lg font-medium">تحليلات الأداء الحيوي والميكانيكا الحيوية.</p>
+            <p className="text-slate-400 text-lg font-medium">نظام التحليلات الرياضية المتقدم جاهز للعمل.</p>
         </div>
         <div className="bg-slate-900/80 px-4 py-2 rounded-xl border border-white/5 flex items-center gap-2 text-slate-300 backdrop-blur-md shadow-lg">
             <CalendarDays className="w-4 h-4 text-blue-400" />
@@ -110,19 +100,6 @@ export const Dashboard: React.FC = () => {
             </LineChart>
           </ResponsiveContainer>
         </div>
-      </div>
-      
-      {/* Science Tips */}
-      <div className="bg-blue-600/10 border border-blue-500/20 p-6 rounded-3xl flex items-start gap-4 animate-slide-up">
-          <div className="bg-blue-500 p-2 rounded-xl">
-              <Microscope className="w-5 h-5 text-white" />
-          </div>
-          <div>
-              <h4 className="text-blue-400 font-bold mb-1">توصية مختبر الأداء</h4>
-              <p className="text-slate-400 text-sm leading-relaxed">
-                  بناءً على حمل التدريب المرتفع في الـ 48 ساعة الماضية وانخفاض مؤشر الاستشفاء لـ 30%، نوصي بجلسة تدليك رياضي وتناول وجبة غنية بالكربوهيدرات المعقدة لتعويض مخازن الجليكوجين.
-              </p>
-          </div>
       </div>
     </div>
   );
