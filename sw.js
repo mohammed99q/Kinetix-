@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kinetix-cache-v3';
+const CACHE_NAME = 'kinetix-cache-v4';
 const URLS_TO_CACHE = [
   './',
   './index.html',
@@ -38,21 +38,33 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+  // Skip cross-origin requests that are not in our cache list logic (except images handled below)
   if (!event.request.url.startsWith('http')) return;
 
   event.respondWith(
     caches.match(event.request)
       .then((response) => {
         if (response) return response;
+
         return fetch(event.request).then((networkResponse) => {
-          if(!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic' && networkResponse.type !== 'cors') {
+          // Check if we received a valid response
+          // Note: We allow type 'opaque' (status 0) for external resources like CDN images/icons
+          if (!networkResponse || (networkResponse.status !== 200 && networkResponse.status !== 0)) {
             return networkResponse;
           }
+
+          // Don't cache if it's a POST request or similar
+          if(event.request.method !== 'GET') {
+              return networkResponse;
+          }
+
           const responseToCache = networkResponse.clone();
           caches.open(CACHE_NAME).then((cache) => {
-            if (event.request.method === 'GET') {
-              cache.put(event.request, responseToCache);
-            }
+             try {
+                cache.put(event.request, responseToCache);
+             } catch (err) {
+                // Ignore errors (like quota exceeded)
+             }
           });
           return networkResponse;
         });
