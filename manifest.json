@@ -1,0 +1,54 @@
+{
+  "name": "Kinetix Performance",
+  "short_name": "Kinetix",
+  "description": "منصة علوم رياضية متكاملة تعمل بدون إنترنت للتحليل الحركي والتمارين المنزلية.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait",
+  "dir": "rtl",
+  "lang": "ar",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3048/3048344.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3048/3048344.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "التمارين المنزلية",
+      "url": "/?view=HOME_WORKOUTS",
+      "icons": [{ "src": "https://cdn-icons-png.flaticon.com/512/3048/3048344.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "المستشار الرياضي",
+      "url": "/?view=AI_COACH",
+      "icons": [{ "src": "https://cdn-icons-png.flaticon.com/512/3048/3048344.png", "sizes": "192x192" }]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=1080&h=1920",
+      "sizes": "1080x1920",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "واجهة التمارين المنزلية الذكية"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=1920&h=1080",
+      "sizes": "1920x1080",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "لوحة قيادة وتحليل الأداء الرياضي"
+    }
+  ]
+}
