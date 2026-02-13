@@ -10,9 +10,10 @@ if (!rootElement) {
 // Service Worker Registration
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
+    // Use relative path for better compatibility
+    navigator.serviceWorker.register('./sw.js')
       .then(registration => {
-        console.log('SW registered: ', registration);
+        console.log('SW registered successfully: ', registration.scope);
       })
       .catch(registrationError => {
         console.log('SW registration failed: ', registrationError);

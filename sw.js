@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kinetix-cache-v1';
+const CACHE_NAME = 'kinetix-cache-v2';
 const URLS_TO_CACHE = [
   './',
   './index.html',
@@ -9,7 +9,7 @@ const URLS_TO_CACHE = [
 ];
 
 self.addEventListener('install', (event) => {
-  self.skipWaiting();
+  self.skipWaiting(); // Force waiting service worker to become active
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then((cache) => {
@@ -21,19 +21,27 @@ self.addEventListener('install', (event) => {
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (cacheName !== CACHE_NAME) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
+    Promise.all([
+      caches.keys().then((cacheNames) => {
+        return Promise.all(
+          cacheNames.map((cacheName) => {
+            if (cacheName !== CACHE_NAME) {
+              return caches.delete(cacheName);
+            }
+          })
+        );
+      }),
+      self.clients.claim() // Immediately control all clients
+    ])
   );
 });
 
 self.addEventListener('fetch', (event) => {
+  // Only handle http/https requests
+  if (!event.request.url.startsWith('http')) {
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request)
       .then((response) => {
@@ -54,12 +62,11 @@ self.addEventListener('fetch', (event) => {
 
             caches.open(CACHE_NAME)
               .then((cache) => {
-                // Only cache GET requests
                 if (event.request.method === 'GET') {
                     try {
                         cache.put(event.request, responseToCache);
                     } catch (err) {
-                        console.warn('Failed to cache:', event.request.url);
+                        // Ignore cache errors
                     }
                 }
               });

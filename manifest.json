@@ -1,19 +1,20 @@
 {
   "name": "Kinetix Performance",
   "short_name": "Kinetix",
-  "id": "kinetix-performance-v1",
+  "id": "kinetix-app-v1",
   "description": "منصة علوم رياضية متكاملة تعمل بدون إنترنت للتحليل الحركي والتمارين المنزلية.",
-  "start_url": ".",
+  "start_url": "./?source=pwa",
   "display": "standalone",
   "background_color": "#0f172a",
   "theme_color": "#3b82f6",
   "orientation": "portrait",
   "dir": "rtl",
   "lang": "ar",
+  "scope": "./",
   "icons": [
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/3048/3048344.png",
-      "sizes": "512x512",
+      "src": "https://cdn-icons-png.flaticon.com/128/3048/3048344.png",
+      "sizes": "128x128",
       "type": "image/png",
       "purpose": "any"
     },
@@ -21,19 +22,19 @@
       "src": "https://cdn-icons-png.flaticon.com/512/3048/3048344.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any maskable"
     }
   ],
   "shortcuts": [
     {
       "name": "التمارين المنزلية",
-      "url": "?view=HOME_WORKOUTS",
-      "icons": [{ "src": "https://cdn-icons-png.flaticon.com/512/3048/3048344.png", "sizes": "512x512", "type": "image/png" }]
+      "url": "./?view=HOME_WORKOUTS",
+      "icons": [{ "src": "https://cdn-icons-png.flaticon.com/128/3048/3048344.png", "sizes": "128x128", "type": "image/png" }]
     },
     {
       "name": "المستشار الرياضي",
-      "url": "?view=AI_COACH",
-      "icons": [{ "src": "https://cdn-icons-png.flaticon.com/512/3048/3048344.png", "sizes": "512x512", "type": "image/png" }]
+      "url": "./?view=AI_COACH",
+      "icons": [{ "src": "https://cdn-icons-png.flaticon.com/128/3048/3048344.png", "sizes": "128x128", "type": "image/png" }]
     }
   ],
   "screenshots": [
