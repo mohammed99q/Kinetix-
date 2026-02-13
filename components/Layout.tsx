@@ -1,6 +1,6 @@
 import React from 'react';
 import { AppView } from '../types';
-import { LayoutDashboard, MessageSquare, Camera, Home, UserCircle } from 'lucide-react';
+import { LayoutDashboard, MessageSquare, Camera, Home, UserCircle, Activity } from 'lucide-react';
 
 interface LayoutProps {
   currentView: AppView;
@@ -23,7 +23,7 @@ export const Layout: React.FC<LayoutProps> = ({ currentView, setView, children }
       <header className="safe-top bg-slate-950/80 backdrop-blur-2xl border-b border-white/[0.03] px-6 py-4 flex items-center justify-between z-40 shrink-0">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-blue-900/20 border border-white/10">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6.5 6.5 11 11"/><path d="m21 21-1-1"/><path d="m3 3 1 1"/><path d="m18 22 .44-2.2a2.3 2.3 0 0 0-2.24-2.8h-8.4a2.3 2.3 0 0 0-2.24 2.8L6 22"/><path d="m18 2-.44 2.2a2.3 2.3 0 0 1-2.24 2.8h-8.4a2.3 2.3 0 0 1-2.24-2.8L6 2"/></svg>
+            <Activity className="text-white w-6 h-6" />
           </div>
           <div className="flex flex-col">
             <span className="font-black text-xl text-white tracking-tight leading-none">Kinetix</span>
@@ -31,7 +31,7 @@ export const Layout: React.FC<LayoutProps> = ({ currentView, setView, children }
           </div>
         </div>
         <div className="w-10 h-10 rounded-2xl bg-slate-900 border border-white/5 overflow-hidden p-0.5 shadow-inner">
-           <img src="https://placehold.co/100x100/3b82f6/white.png?text=U" alt="profile" className="w-full h-full rounded-[0.8rem] object-cover" />
+           <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=User" alt="profile" className="w-full h-full rounded-[0.8rem] object-cover bg-slate-800" />
         </div>
       </header>
 

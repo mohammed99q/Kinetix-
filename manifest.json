@@ -2,7 +2,7 @@
   "name": "Kinetix Pro",
   "short_name": "Kinetix",
   "id": "com.kinetix.pro",
-  "description": "منصة علوم رياضية الاحترافية.",
+  "description": "منصة علوم رياضية الاحترافية للأداء العالي.",
   "start_url": "/?mode=app",
   "display": "fullscreen",
   "background_color": "#020617",
@@ -12,15 +12,16 @@
   "lang": "ar",
   "icons": [
     {
-      "src": "https://placehold.co/192x192/020617/2563eb.png?text=K",
+      "src": "https://api.dicebear.com/7.x/shapes/svg?seed=kinetix&backgroundColor=2563eb&shape1Color=ffffff",
       "sizes": "192x192",
-      "type": "image/png",
+      "type": "image/svg+xml",
       "purpose": "any"
     },
     {
-      "src": "https://placehold.co/512x512/020617/2563eb.png?text=Kinetix",
+      "src": "https://api.dicebear.com/7.x/shapes/svg?seed=kinetix&backgroundColor=2563eb&shape1Color=ffffff",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/svg+xml",
+      "purpose": "any"
     }
   ]
 }

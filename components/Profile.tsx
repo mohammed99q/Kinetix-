@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { User, Save, Target, Ruler, Weight } from 'lucide-react';
+import { User, Save, Target, Ruler, Weight, CheckCircle2 } from 'lucide-react';
 import { UserProfile } from '../types';
 
 export const Profile: React.FC = () => {
@@ -157,7 +157,7 @@ export const Profile: React.FC = () => {
                 
                 {saved && (
                   <span className="text-green-400 font-medium animate-pulse flex items-center gap-2 bg-green-500/10 px-4 py-2 rounded-xl border border-green-500/20">
-                    <CheckCircle className="w-4 h-4" /> تم الحفظ بنجاح!
+                    <CheckCircle2 className="w-4 h-4" /> تم الحفظ بنجاح!
                   </span>
                 )}
               </div>
@@ -167,22 +167,3 @@ export const Profile: React.FC = () => {
     </div>
   );
 };
-function CheckCircle(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg 
-      {...props} 
-      xmlns="http://www.w3.org/2000/svg" 
-      width="24" 
-      height="24" 
-      viewBox="0 0 24 24" 
-      fill="none" 
-      stroke="currentColor" 
-      strokeWidth="2" 
-      strokeLinecap="round" 
-      strokeLinejoin="round"
-    >
-      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-      <polyline points="22 4 12 14.01 9 11.01" />
-    </svg>
-  );
-}
