@@ -1,0 +1,7 @@
+{
+  "name": "Kinetix Performance",
+  "description": "A completely offline sports science platform for training analysis and home workouts.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
