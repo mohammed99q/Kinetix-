@@ -13,27 +13,22 @@ function App() {
 
   const renderView = () => {
     switch (currentView) {
-      case AppView.DASHBOARD:
-        return <Dashboard />;
-      case AppView.AI_COACH:
-        return <AiCoach />;
-      case AppView.PLAN_GENERATOR:
-        return <PlanGenerator />;
-      case AppView.TECHNIQUE_ANALYSIS:
-        return <TechniqueAnalysis />;
-      case AppView.HOME_WORKOUTS:
-        return <HomeWorkouts />;
-      case AppView.PROFILE:
-        return <Profile />;
-      default:
-        return <Dashboard />;
+      case AppView.DASHBOARD: return <Dashboard />;
+      case AppView.AI_COACH: return <AiCoach />;
+      case AppView.PLAN_GENERATOR: return <PlanGenerator />;
+      case AppView.TECHNIQUE_ANALYSIS: return <TechniqueAnalysis />;
+      case AppView.HOME_WORKOUTS: return <HomeWorkouts />;
+      case AppView.PROFILE: return <Profile />;
+      default: return <Dashboard />;
     }
   };
 
   return (
-    <Layout currentView={currentView} setView={setCurrentView}>
-      {renderView()}
-    </Layout>
+    <div className="relative h-full w-full overflow-hidden bg-slate-950">
+      <Layout currentView={currentView} setView={setCurrentView}>
+        {renderView()}
+      </Layout>
+    </div>
   );
 }
 

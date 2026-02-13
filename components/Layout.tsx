@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { AppView } from '../types';
-import { Activity, LayoutDashboard, MessageSquare, Calendar, Camera, Home, UserCircle, Linkedin, Github, Menu, X } from 'lucide-react';
+import { LayoutDashboard, MessageSquare, Calendar, Camera, Home, UserCircle } from 'lucide-react';
 
 interface LayoutProps {
   currentView: AppView;
@@ -9,159 +9,59 @@ interface LayoutProps {
 }
 
 export const Layout: React.FC<LayoutProps> = ({ currentView, setView, children }) => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
   const navItems = [
-    { id: AppView.DASHBOARD, label: 'لوحة القيادة', icon: LayoutDashboard },
-    { id: AppView.PROFILE, label: 'الملف الشخصي', icon: UserCircle },
-    { id: AppView.AI_COACH, label: 'المستشار الرياضي', icon: MessageSquare },
-    { id: AppView.PLAN_GENERATOR, label: 'تخطيط التدريب', icon: Calendar },
-    { id: AppView.TECHNIQUE_ANALYSIS, label: 'تحليل الحركة', icon: Camera },
-    { id: AppView.HOME_WORKOUTS, label: 'التمارين المنزلية', icon: Home },
+    { id: AppView.DASHBOARD, label: 'الرئيسية', icon: LayoutDashboard },
+    { id: AppView.AI_COACH, label: 'المدرب', icon: MessageSquare },
+    { id: AppView.TECHNIQUE_ANALYSIS, label: 'التحليل', icon: Camera },
+    { id: AppView.HOME_WORKOUTS, label: 'التمارين', icon: Home },
+    { id: AppView.PROFILE, label: 'حسابي', icon: UserCircle },
   ];
 
-  const handleMobileNav = (view: AppView) => {
-    setView(view);
-    setIsMobileMenuOpen(false);
-  };
-
   return (
-    <div className="min-h-screen bg-slate-900 flex flex-col md:flex-row text-right font-sans">
-      {/* Sidebar Desktop */}
-      <aside className="hidden md:flex flex-col w-72 bg-slate-950 border-l border-slate-800 z-20 shadow-2xl sticky top-0 h-screen">
-        <div className="p-8 border-b border-slate-800 flex items-center gap-4 animate-fade-in">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center shadow-lg shadow-blue-900/30 transform hover:scale-105 transition-transform duration-300 cursor-pointer">
-            <Activity className="text-white w-7 h-7" />
+    <div className="flex flex-col h-full bg-slate-950 text-right overflow-hidden">
+      {/* Header الثابت كأنه تطبيق أصلي */}
+      <header className="safe-top bg-slate-950/80 backdrop-blur-xl border-b border-white/5 px-6 py-4 flex items-center justify-between z-40">
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
           </div>
-          <div>
-            <h1 className="font-black text-2xl text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400 tracking-tight leading-none">Kinetix</h1>
-            <h1 className="font-bold text-xs text-blue-500 tracking-[0.2em] mt-1">PERFORMANCE</h1>
-          </div>
+          <span className="font-black text-lg text-white tracking-tight">Kinetix</span>
         </div>
+        <div className="w-8 h-8 rounded-full bg-slate-800 border border-white/10 overflow-hidden">
+           <img src="https://placehold.co/100x100/3b82f6/white.png?text=U" alt="profile" />
+        </div>
+      </header>
 
-        <nav className="flex-1 p-4 space-y-2 mt-4 overflow-y-auto custom-scrollbar">
-          {navItems.map((item, index) => (
+      {/* منطقة المحتوى - تمرير داخلي فقط */}
+      <main className="flex-1 overflow-y-auto custom-scrollbar pb-32">
+        <div className="max-w-4xl mx-auto p-5">
+          {children}
+        </div>
+      </main>
+
+      {/* الشريط السفلي - مظهر التطبيقات الأصلية */}
+      <nav className="safe-bottom fixed bottom-0 left-0 right-0 bg-slate-900/90 backdrop-blur-2xl border-t border-white/5 px-4 pt-3 pb-6 flex justify-around items-center z-50 shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
+        {navItems.map((item) => {
+          const isActive = currentView === item.id;
+          return (
             <button
               key={item.id}
               onClick={() => setView(item.id)}
-              style={{ animationDelay: `${index * 50}ms` }}
-              className={`w-full flex items-center gap-4 px-4 py-4 rounded-2xl transition-all duration-300 group animate-slide-up ${
-                currentView === item.id
-                  ? 'bg-gradient-to-r from-blue-600/90 to-indigo-600/90 text-white shadow-lg shadow-blue-900/20 translate-x-2'
-                  : 'text-slate-400 hover:bg-slate-900 hover:text-white hover:translate-x-1'
-              }`}
+              className="flex flex-col items-center gap-1 min-w-[64px] transition-all relative"
             >
-              <item.icon className={`w-5 h-5 ${currentView === item.id ? 'text-white' : 'text-slate-500 group-hover:text-blue-400 transition-colors'}`} />
-              <span className="font-medium text-base tracking-wide">{item.label}</span>
+              <div className={`p-2 rounded-2xl transition-all ${isActive ? 'bg-blue-600 text-white scale-110 shadow-lg shadow-blue-900/40' : 'text-slate-500 hover:text-slate-300'}`}>
+                <item.icon className="w-6 h-6" />
+              </div>
+              <span className={`text-[10px] font-bold ${isActive ? 'text-blue-400' : 'text-slate-500'}`}>
+                {item.label}
+              </span>
+              {isActive && (
+                <div className="absolute -top-3 w-1 h-1 bg-blue-500 rounded-full blur-[2px]"></div>
+              )}
             </button>
-          ))}
-        </nav>
-
-        <div className="p-6 border-t border-slate-800 animate-fade-in delay-300">
-          <div className="bg-slate-900/50 rounded-2xl p-4 border border-slate-800 flex items-center gap-3 backdrop-blur-sm mb-4">
-             <div className="relative">
-                <div className="w-2 h-2 rounded-full bg-green-500 animate-ping absolute opacity-75"></div>
-                <div className="w-2 h-2 rounded-full bg-green-500 relative"></div>
-             </div>
-             <p className="text-xs text-slate-400">النظام متصل</p>
-          </div>
-          
-           <div className="text-center">
-            <p className="text-[10px] text-slate-500 font-medium tracking-wider mb-2">DEVELOPED BY</p>
-            <p className="text-xs font-bold text-blue-500 tracking-wide mb-3">MOHAMMED ALYASAR</p>
-            
-            <div className="flex justify-center gap-3">
-              <a 
-                href="https://www.linkedin.com/in/mohammed-alyasar99/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="p-2 bg-slate-800 rounded-lg text-slate-400 hover:text-blue-500 hover:bg-slate-700 transition-all transform hover:scale-110"
-                aria-label="LinkedIn Profile"
-              >
-                <Linkedin className="w-4 h-4" />
-              </a>
-              <a 
-                href="https://github.com/mohammed99q" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="p-2 bg-slate-800 rounded-lg text-slate-400 hover:text-white hover:bg-slate-700 transition-all transform hover:scale-110"
-                aria-label="GitHub Profile"
-              >
-                <Github className="w-4 h-4" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </aside>
-
-      {/* Mobile Header */}
-      <div className="md:hidden bg-slate-950/90 backdrop-blur-xl border-b border-slate-800 p-4 flex items-center justify-between sticky top-0 z-50 shadow-lg">
-        <div className="flex items-center gap-3">
-           <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center shadow-blue-900/20 shadow-lg">
-            <Activity className="text-white w-5 h-5" />
-          </div>
-          <span className="font-black text-lg text-white tracking-wide">Kinetix</span>
-        </div>
-        <button 
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="p-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg transition-colors"
-        >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
-      </div>
-
-      {/* Mobile Menu Overlay */}
-      {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-slate-900/95 backdrop-blur-sm md:hidden flex flex-col pt-20 px-6 pb-6 animate-fade-in">
-            <nav className="flex-1 space-y-3">
-                {navItems.map((item) => (
-                    <button
-                    key={item.id}
-                    onClick={() => handleMobileNav(item.id)}
-                    className={`w-full flex items-center gap-4 px-4 py-4 rounded-2xl transition-all ${
-                        currentView === item.id
-                        ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/40'
-                        : 'bg-slate-800/50 text-slate-300'
-                    }`}
-                    >
-                    <item.icon className="w-5 h-5" />
-                    <span className="font-medium text-lg">{item.label}</span>
-                    </button>
-                ))}
-            </nav>
-
-             <div className="mt-8 p-6 bg-slate-800/50 rounded-3xl border border-slate-700/50 text-center">
-                <p className="text-[10px] text-slate-500 font-medium tracking-wider mb-2">DEVELOPED BY</p>
-                <p className="text-sm font-bold text-blue-400 tracking-wide mb-4">MOHAMMED ALYASAR</p>
-                
-                <div className="flex justify-center gap-4">
-                <a 
-                    href="https://www.linkedin.com/in/mohammed-alyasar99/" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="p-3 bg-slate-900 rounded-xl text-slate-400 hover:text-blue-500 border border-slate-700"
-                >
-                    <Linkedin className="w-5 h-5" />
-                </a>
-                <a 
-                    href="https://github.com/mohammed99q" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="p-3 bg-slate-900 rounded-xl text-slate-400 hover:text-white border border-slate-700"
-                >
-                    <Github className="w-5 h-5" />
-                </a>
-                </div>
-            </div>
-        </div>
-      )}
-
-      {/* Main Content */}
-      <main className="flex-1 p-4 md:p-8 overflow-y-auto h-[calc(100vh-4rem)] md:h-screen bg-slate-900">
-        <div className="max-w-7xl mx-auto h-full">
-            {children}
-        </div>
-      </main>
+          );
+        })}
+      </nav>
     </div>
   );
 };

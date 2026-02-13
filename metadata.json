@@ -1,6 +1,6 @@
 {
-  "name": "Kinetix Performance",
-  "description": "A completely offline sports science platform for training analysis and home workouts.",
+  "name": "Kinetix Pro",
+  "description": "منصة علوم رياضية متكاملة للأداء العالي والتحليل المتقدم، تعمل كبرنامج مستقل.",
   "requestFramePermissions": [
     "camera"
   ]
