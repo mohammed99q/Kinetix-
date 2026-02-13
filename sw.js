@@ -1,19 +1,19 @@
-const CACHE_NAME = 'kinetix-pro-v7';
+const CACHE_NAME = 'kinetix-pro-v9';
 const ASSETS_TO_CACHE = [
-  'index.html',
-  'manifest.json'
+  '/',
+  '/index.html',
+  '/manifest.json'
 ];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('Caching assets...');
-      // استخدام cache.add بدلاً من addAll لملفات مفردة لضمان عدم فشل الكل إذا فشل واحد
-      return Promise.all(
-        ASSETS_TO_CACHE.map(url => {
-          return cache.add(url).catch(err => console.warn(`Failed to cache ${url}:`, err));
-        })
-      );
+      console.log('Caching essential assets...');
+      return cache.addAll(ASSETS_TO_CACHE).catch(err => {
+          console.warn('Initial cache failed, retrying individually...');
+          // Fallback to individual adds if addAll fails due to one missing asset
+          return Promise.all(ASSETS_TO_CACHE.map(asset => cache.add(asset).catch(() => {})));
+      });
     })
   );
   self.skipWaiting();
@@ -31,14 +31,12 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  // استراتيجية: البحث في الكاش أولاً، ثم الشبكة
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
       if (cachedResponse) return cachedResponse;
       return fetch(event.request).catch(() => {
-        // إذا كان الطلب ملاحة (Navigation)، أعد صفحة index.html
         if (event.request.mode === 'navigate') {
-          return caches.match('index.html');
+          return caches.match('/index.html');
         }
       });
     })

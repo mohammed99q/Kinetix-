@@ -13,8 +13,8 @@
     
     <title>Kinetix Pro | Sport Science</title>
     
-    <!-- Precise manifest linking with relative path -->
-    <link rel="manifest" href="manifest.json" />
+    <!-- Precise manifest linking -->
+    <link rel="manifest" href="/manifest.json" />
     <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3048/3048398.png" />
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -67,7 +67,6 @@
 
       .custom-scrollbar::-webkit-scrollbar { width: 0; }
       
-      /* Smooth appearance for scientific look */
       @keyframes slideUp {
         from { opacity: 0; transform: translateY(20px); }
         to { opacity: 1; transform: translateY(0); }
@@ -102,8 +101,7 @@
 
     <div id="root"></div>
     
-    <!-- Use relative path for entry script -->
-    <script type="module" src="index.tsx"></script>
+    <script type="module" src="/index.tsx"></script>
     <script>
       window.addEventListener('load', () => {
         setTimeout(() => {
