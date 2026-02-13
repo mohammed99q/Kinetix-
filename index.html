@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <meta name="theme-color" content="#020617" />
     
-    <!-- إعدادات iOS لإخفاء المتصفح بالكامل -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-touch-fullscreen" content="yes">
     
     <title>Kinetix Pro</title>
     
@@ -22,55 +20,75 @@
       :root {
         --sat: env(safe-area-inset-top);
         --sab: env(safe-area-inset-bottom);
-        --sal: env(safe-area-inset-left);
-        --sar: env(safe-area-inset-right);
       }
       
-      body {
+      html, body {
         font-family: 'Tajawal', sans-serif;
         background-color: #020617;
         margin: 0;
         padding: 0;
-        /* منع أي إيماءات متصفح */
-        overscroll-behavior-y: none;
-        overflow: hidden;
-        -webkit-tap-highlight-color: transparent;
-        -webkit-touch-callout: none;
-        user-select: none;
-        /* ملء الشاشة بالكامل */
-        height: 100vh;
-        height: -webkit-fill-available;
-        width: 100vw;
+        height: 100%;
+        width: 100%;
+        overflow: hidden; 
+        position: fixed;
       }
 
-      /* دعم المناطق الآمنة للهواتف ذات النوتش */
-      .safe-top {
-        padding-top: max(16px, var(--sat));
-      }
-      .safe-bottom {
-        padding-bottom: max(20px, var(--sab));
-      }
-      
-      #splash-screen {
-        position: fixed;
-        inset: 0;
-        background: #020617;
-        z-index: 10000;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        transition: opacity 0.4s ease-in-out;
-      }
-      
       .app-main {
         height: 100%;
         width: 100%;
         display: flex;
         flex-direction: column;
+        position: absolute;
+        top: 0;
+        left: 0;
       }
 
-      /* إخفاء شريط التمرير ولكن السماح بالتمرير */
+      .safe-top {
+        padding-top: max(12px, var(--sat));
+      }
+      .safe-bottom {
+        padding-bottom: max(12px, var(--sab));
+      }
+
+      #splash-screen {
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
+        z-index: 10000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .logo-container {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .logo-glow {
+        position: absolute;
+        inset: -20px;
+        background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
+        animation: pulse-glow 2s infinite ease-in-out;
+      }
+
+      @keyframes pulse-glow {
+        0%, 100% { transform: scale(1); opacity: 0.5; }
+        50% { transform: scale(1.2); opacity: 0.8; }
+      }
+
+      .scroll-container {
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+        flex: 1;
+      }
+
       .custom-scrollbar::-webkit-scrollbar {
         width: 0px;
         background: transparent;
@@ -92,10 +110,18 @@
 </head>
   <body>
     <div id="splash-screen">
-      <div class="w-20 h-20 bg-blue-600 rounded-[2rem] flex items-center justify-center shadow-2xl animate-pulse">
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+      <div class="logo-container">
+        <div class="logo-glow"></div>
+        <div class="w-24 h-24 bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-700 rounded-[2.2rem] flex items-center justify-center shadow-[0_0_50px_rgba(37,99,235,0.4)] relative z-10 border border-white/20">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="drop-shadow-lg"><path d="m6.5 6.5 11 11"/><path d="m21 21-1-1"/><path d="m3 3 1 1"/><path d="m18 22 .44-2.2a2.3 2.3 0 0 0-2.24-2.8h-8.4a2.3 2.3 0 0 0-2.24 2.8L6 22"/><path d="m18 2-.44 2.2a2.3 2.3 0 0 1-2.24 2.8h-8.4a2.3 2.3 0 0 1-2.24-2.8L6 2"/></svg>
+        </div>
       </div>
-      <h2 class="mt-6 text-white font-black text-2xl tracking-tighter">Kinetix Pro</h2>
+      <h2 class="mt-10 text-white font-black text-3xl tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400">Kinetix Pro</h2>
+      <div class="mt-4 flex gap-1">
+        <div class="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+        <div class="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+        <div class="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce"></div>
+      </div>
     </div>
 
     <div id="root" class="app-main"></div>
@@ -105,14 +131,12 @@
       window.addEventListener('load', () => {
         setTimeout(() => {
           const splash = document.getElementById('splash-screen');
-          splash.style.opacity = '0';
-          setTimeout(() => splash.style.display = 'none', 400);
-        }, 1200);
+          if (splash) {
+            splash.style.opacity = '0';
+            setTimeout(() => splash.style.display = 'none', 500);
+          }
+        }, 1500);
       });
-      // منع السحب للتحديث الذي يظهر شريط المتصفح
-      document.addEventListener('touchmove', (e) => {
-        if (e.touches.length > 1) e.preventDefault();
-      }, { passive: false });
     </script>
   </body>
 </html>
