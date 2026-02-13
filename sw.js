@@ -1,19 +1,20 @@
-const CACHE_NAME = 'kinetix-cache-v2';
+const CACHE_NAME = 'kinetix-cache-v3';
 const URLS_TO_CACHE = [
   './',
   './index.html',
   './index.tsx',
   './manifest.json',
   'https://cdn.tailwindcss.com',
-  'https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap'
+  'https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap',
+  'https://cdn-icons-png.flaticon.com/192/3048/3048344.png',
+  'https://cdn-icons-png.flaticon.com/512/3048/3048344.png'
 ];
 
 self.addEventListener('install', (event) => {
-  self.skipWaiting(); // Force waiting service worker to become active
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then((cache) => {
-        console.log('Opened cache');
         return cache.addAll(URLS_TO_CACHE);
       })
   );
@@ -31,49 +32,30 @@ self.addEventListener('activate', (event) => {
           })
         );
       }),
-      self.clients.claim() // Immediately control all clients
+      self.clients.claim()
     ])
   );
 });
 
 self.addEventListener('fetch', (event) => {
-  // Only handle http/https requests
-  if (!event.request.url.startsWith('http')) {
-    return;
-  }
+  if (!event.request.url.startsWith('http')) return;
 
   event.respondWith(
     caches.match(event.request)
       .then((response) => {
-        // Cache hit - return response
-        if (response) {
-          return response;
-        }
-
-        return fetch(event.request).then(
-          (response) => {
-            // Check if we received a valid response
-            if(!response || response.status !== 200 || response.type !== 'basic' && response.type !== 'cors') {
-              return response;
-            }
-
-            // Clone the response
-            const responseToCache = response.clone();
-
-            caches.open(CACHE_NAME)
-              .then((cache) => {
-                if (event.request.method === 'GET') {
-                    try {
-                        cache.put(event.request, responseToCache);
-                    } catch (err) {
-                        // Ignore cache errors
-                    }
-                }
-              });
-
-            return response;
+        if (response) return response;
+        return fetch(event.request).then((networkResponse) => {
+          if(!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic' && networkResponse.type !== 'cors') {
+            return networkResponse;
           }
-        );
+          const responseToCache = networkResponse.clone();
+          caches.open(CACHE_NAME).then((cache) => {
+            if (event.request.method === 'GET') {
+              cache.put(event.request, responseToCache);
+            }
+          });
+          return networkResponse;
+        });
       })
   );
 });
