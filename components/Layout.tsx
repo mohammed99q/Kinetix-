@@ -23,15 +23,15 @@ export const Layout: React.FC<LayoutProps> = ({ currentView, setView, children }
       <header className="safe-top bg-slate-950/80 backdrop-blur-2xl border-b border-white/[0.03] px-6 py-4 flex items-center justify-between z-40 shrink-0">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-blue-900/40 border border-white/10">
-            <Activity className="text-white w-6 h-6" />
+            <span className="text-white font-black italic text-lg">K</span>
           </div>
           <div className="flex flex-col">
-            <span className="font-black text-xl text-white tracking-tight leading-none uppercase">Sport Science</span>
-            <span className="text-[10px] text-blue-400 font-bold tracking-[0.2em] uppercase mt-0.5">Professional Elite</span>
+            <span className="font-black text-2xl text-white tracking-tighter leading-none italic uppercase">KINETIX</span>
+            <span className="text-[10px] text-blue-400 font-bold tracking-[0.25em] uppercase mt-0.5">Professional Pro</span>
           </div>
         </div>
         <div className="w-10 h-10 rounded-2xl bg-slate-900 border border-white/5 overflow-hidden p-0.5 shadow-inner">
-           <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=SportPro" alt="profile" className="w-full h-full rounded-[0.8rem] object-cover bg-slate-800" />
+           <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=KinetixUser" alt="profile" className="w-full h-full rounded-[0.8rem] object-cover bg-slate-800" />
         </div>
       </header>
 

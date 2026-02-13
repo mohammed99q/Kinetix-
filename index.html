@@ -9,10 +9,10 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="mobile-web-app-capable" content="yes" />
     
-    <title>Sport Science Pro</title>
+    <title>Kinetix Pro</title>
     
     <link rel="manifest" href="./manifest.json" />
-    <link rel="apple-touch-icon" href="https://api.dicebear.com/7.x/shapes/png?seed=sportpro&backgroundColor=020617&shape1Color=3b82f6" />
+    <link rel="apple-touch-icon" href="https://api.dicebear.com/7.x/initials/png?seed=K&backgroundColor=2563eb" />
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -21,7 +21,6 @@
         --sat: env(safe-area-inset-top);
         --sab: env(safe-area-inset-bottom);
         --brand-primary: #3b82f6;
-        --brand-secondary: #6366f1;
       }
       
       html, body {
@@ -69,8 +68,8 @@
       }
 
       @keyframes logo-bounce {
-        0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.4)); }
-        50% { transform: scale(1.05); filter: drop-shadow(0 0 30px rgba(59, 130, 246, 0.8)); }
+        0%, 100% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.5)); }
+        50% { transform: scale(1.08); filter: drop-shadow(0 0 35px rgba(59, 130, 246, 0.9)); }
       }
 
       .scroll-container {
@@ -101,16 +100,16 @@
   <body>
     <div id="splash-screen">
       <div class="logo-pulse relative w-32 h-32 mb-8">
-        <div class="absolute inset-0 bg-blue-600/20 rounded-full blur-2xl"></div>
-        <div class="relative w-full h-full bg-gradient-to-br from-blue-500 to-indigo-700 rounded-[2.5rem] flex items-center justify-center border border-white/20 shadow-2xl">
-          <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="m17 7-5 5-5-5"/><path d="m17 12-5 5-5-5"/></svg>
+        <div class="absolute inset-0 bg-blue-600/30 rounded-full blur-3xl animate-pulse"></div>
+        <div class="relative w-full h-full bg-gradient-to-br from-blue-500 to-indigo-700 rounded-[2.5rem] flex items-center justify-center border border-white/20 shadow-2xl overflow-hidden">
+          <span class="text-white text-5xl font-black italic tracking-tighter">K</span>
         </div>
       </div>
-      <h2 class="text-white font-black text-3xl tracking-tighter">SPORT SCIENCE <span class="text-blue-500">PRO</span></h2>
-      <div class="mt-6 flex gap-2">
-        <div class="w-2 h-2 bg-blue-500 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
-        <div class="w-2 h-2 bg-blue-500 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
-        <div class="w-2 h-2 bg-blue-500 rounded-full animate-bounce"></div>
+      <h2 class="text-white font-black text-4xl tracking-tighter uppercase italic">KINETIX <span class="text-blue-500">PRO</span></h2>
+      <div class="mt-8 flex gap-3">
+        <div class="w-2.5 h-2.5 bg-blue-500 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+        <div class="w-2.5 h-2.5 bg-blue-500 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+        <div class="w-2.5 h-2.5 bg-blue-500 rounded-full animate-bounce"></div>
       </div>
     </div>
 
@@ -125,7 +124,7 @@
             splash.style.opacity = '0';
             setTimeout(() => splash.style.display = 'none', 600);
           }
-        }, 1200);
+        }, 1500);
       });
     </script>
   </body>
