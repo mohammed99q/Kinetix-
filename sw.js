@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kinetix-cache-v5';
+const CACHE_NAME = 'kinetix-cache-v6';
 const URLS_TO_CACHE = [
   './',
   './index.html',
@@ -7,9 +7,7 @@ const URLS_TO_CACHE = [
   'https://cdn.tailwindcss.com',
   'https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap',
   'https://ui-avatars.com/api/?name=Ki&background=0F172A&color=3B82F6&size=192&format=png&bold=true',
-  'https://ui-avatars.com/api/?name=Ki&background=0F172A&color=3B82F6&size=192&format=png&bold=true&rounded=true',
-  'https://ui-avatars.com/api/?name=Ki&background=0F172A&color=3B82F6&size=512&format=png&bold=true',
-  'https://ui-avatars.com/api/?name=Ki&background=0F172A&color=3B82F6&size=512&format=png&bold=true&rounded=true'
+  'https://ui-avatars.com/api/?name=Ki&background=0F172A&color=3B82F6&size=512&format=png&bold=true'
 ];
 
 self.addEventListener('install', (event) => {
