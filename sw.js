@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kinetix-cache-v7';
+const CACHE_NAME = 'kinetix-cache-v8';
 const URLS_TO_CACHE = [
   './',
   './index.html',
@@ -6,8 +6,8 @@ const URLS_TO_CACHE = [
   './manifest.json',
   'https://cdn.tailwindcss.com',
   'https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap',
-  'https://ui-avatars.com/api/?name=Ki&background=0F172A&color=3B82F6&size=192&format=png&bold=true',
-  'https://ui-avatars.com/api/?name=Ki&background=0F172A&color=3B82F6&size=512&format=png&bold=true'
+  'https://placehold.co/192x192/0f172a/3b82f6.png',
+  'https://placehold.co/512x512/0f172a/3b82f6.png'
 ];
 
 self.addEventListener('install', (event) => {
