@@ -1,9 +1,9 @@
 {
   "name": "Kinetix Pro Sport Science",
   "short_name": "KinetixPro",
-  "id": "com.kinetix.sport.science.pro",
-  "description": "المنصة العلمية المتقدمة لتحليل الأداء الرياضي والاستشفاء البدني.",
-  "start_url": "./index.html",
+  "id": "com.kinetix.pro.v1",
+  "description": "منصة العلوم الرياضية المتقدمة لتحليل الأداء وتحسين النتائج البدنية.",
+  "start_url": "index.html",
   "scope": "./",
   "display": "standalone",
   "background_color": "#020617",
@@ -14,19 +14,19 @@
   "prefer_related_applications": false,
   "icons": [
     {
-      "src": "https://www.pwabuilder.com/assets/icons/icon_192.png",
+      "src": "https://cdn-icons-png.flaticon.com/512/3048/3048398.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "https://www.pwabuilder.com/assets/icons/icon_512.png",
+      "src": "https://cdn-icons-png.flaticon.com/512/3048/3048398.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "https://www.pwabuilder.com/assets/icons/icon_512.png",
+      "src": "https://cdn-icons-png.flaticon.com/512/3048/3048398.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"

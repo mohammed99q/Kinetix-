@@ -1,16 +1,15 @@
-const CACHE_NAME = 'kinetix-pro-v3';
+const CACHE_NAME = 'kinetix-pro-v6';
 const ASSETS_TO_CACHE = [
   './',
-  './index.html',
-  './manifest.json',
-  'https://cdn.tailwindcss.com',
-  'https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap'
+  'index.html',
+  'manifest.json'
 ];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS_TO_CACHE);
+      console.log('Caching essential assets...');
+      return cache.addAll(ASSETS_TO_CACHE).catch(err => console.error('Cache addAll error:', err));
     })
   );
   self.skipWaiting();
@@ -29,11 +28,11 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) return cachedResponse;
+    caches.match(event.request).then((response) => {
+      if (response) return response;
       return fetch(event.request).catch(() => {
         if (event.request.mode === 'navigate') {
-          return caches.match('./index.html');
+          return caches.match('index.html');
         }
       });
     })

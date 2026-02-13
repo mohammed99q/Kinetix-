@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <meta name="theme-color" content="#020617" />
     
+    <!-- PWA primary tags -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="mobile-web-app-capable" content="yes" />
@@ -12,8 +13,9 @@
     
     <title>Kinetix Pro | Sport Science</title>
     
-    <link rel="manifest" href="./manifest.json" />
-    <link rel="apple-touch-icon" href="https://www.pwabuilder.com/assets/icons/icon_192.png" />
+    <!-- Precise manifest linking with relative path -->
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3048/3048398.png" />
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -64,6 +66,13 @@
       }
 
       .custom-scrollbar::-webkit-scrollbar { width: 0; }
+      
+      /* Smooth appearance for scientific look */
+      @keyframes slideUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-slide-up { animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
     </style>
   <script type="importmap">
 {
@@ -83,17 +92,18 @@
     <div id="splash-screen">
       <div class="relative w-24 h-24 mb-6">
         <div class="absolute inset-0 bg-blue-600/20 rounded-full blur-2xl animate-pulse"></div>
-        <div class="relative w-full h-full bg-gradient-to-br from-blue-500 to-indigo-700 rounded-3xl flex items-center justify-center border border-white/10 shadow-2xl">
-          <span class="text-white text-4xl font-black italic">K</span>
+        <div class="relative w-full h-full bg-gradient-to-br from-blue-500 to-indigo-700 rounded-3xl flex items-center justify-center border border-white/10 shadow-2xl overflow-hidden">
+          <span class="text-white text-4xl font-black italic select-none">K</span>
         </div>
       </div>
       <h2 class="text-white font-black text-2xl tracking-tighter uppercase italic">KINETIX <span class="text-blue-500">PRO</span></h2>
-      <p class="text-slate-500 text-[10px] font-bold tracking-[0.3em] mt-2 uppercase">Sport Science Edition</p>
+      <p class="text-slate-500 text-[10px] font-bold tracking-[0.3em] mt-2 uppercase">Sport Science Lab</p>
     </div>
 
     <div id="root"></div>
     
-    <script type="module" src="./index.tsx"></script>
+    <!-- Use relative path for entry script -->
+    <script type="module" src="index.tsx"></script>
     <script>
       window.addEventListener('load', () => {
         setTimeout(() => {
