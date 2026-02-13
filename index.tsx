@@ -10,8 +10,11 @@ if (!rootElement) {
 // Service Worker Registration for PWA support
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    // Using a relative path to avoid origin mismatch errors in sandboxed environments
-    navigator.serviceWorker.register('./sw.js')
+    // حل مشكلة Origin Mismatch عبر بناء الرابط بناءً على موقع النافذة الحالي
+    // هذا يضمن أن sw.js يتم طلبه من نفس النطاق الذي يعمل عليه التطبيق حالياً
+    const swUrl = new URL('sw.js', window.location.href).href;
+    
+    navigator.serviceWorker.register(swUrl)
       .then(registration => {
         console.log('Kinetix Pro SW registered: ', registration.scope);
       })
