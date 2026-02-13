@@ -1,9 +1,9 @@
 {
   "name": "Kinetix Performance",
   "short_name": "Kinetix",
-  "id": "kinetix-app-v1",
+  "id": "/",
   "description": "منصة علوم رياضية متكاملة للتحليل الحركي والتمارين المنزلية تعمل بدون إنترنت.",
-  "start_url": "./",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "background_color": "#0f172a",
@@ -13,16 +13,28 @@
   "lang": "ar",
   "icons": [
     {
-      "src": "https://cdn-icons-png.flaticon.com/192/3048/3048344.png",
+      "src": "https://ui-avatars.com/api/?name=Ki&background=0F172A&color=3B82F6&size=192&format=png&bold=true",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/3048/3048344.png",
+      "src": "https://ui-avatars.com/api/?name=Ki&background=0F172A&color=3B82F6&size=192&format=png&bold=true&rounded=true",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "https://ui-avatars.com/api/?name=Ki&background=0F172A&color=3B82F6&size=512&format=png&bold=true",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "https://ui-avatars.com/api/?name=Ki&background=0F172A&color=3B82F6&size=512&format=png&bold=true&rounded=true",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "screenshots": [
