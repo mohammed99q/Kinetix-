@@ -8,8 +8,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="Kinetix Pro" />
     
-    <title>Kinetix Pro</title>
+    <title>Kinetix Pro | Sport Science</title>
     
     <link rel="manifest" href="./manifest.json" />
     <link rel="apple-touch-icon" href="https://www.pwabuilder.com/assets/icons/icon_192.png" />
@@ -20,7 +21,6 @@
       :root {
         --sat: env(safe-area-inset-top);
         --sab: env(safe-area-inset-bottom);
-        --brand-primary: #3b82f6;
       }
       
       html, body {
@@ -32,44 +32,29 @@
         width: 100%;
         overflow: hidden; 
         position: fixed;
+        -webkit-tap-highlight-color: transparent;
       }
 
-      .app-main {
+      #root {
         height: 100%;
         width: 100%;
         display: flex;
         flex-direction: column;
-        position: absolute;
-        top: 0;
-        left: 0;
       }
 
-      .safe-top {
-        padding-top: max(12px, var(--sat));
-      }
-      .safe-bottom {
-        padding-bottom: max(12px, var(--sab));
-      }
+      .safe-top { padding-top: max(12px, var(--sat)); }
+      .safe-bottom { padding-bottom: max(12px, var(--sab)); }
 
       #splash-screen {
         position: fixed;
         inset: 0;
-        background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
+        background: #020617;
         z-index: 10000;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      .logo-pulse {
-        animation: logo-bounce 2s infinite ease-in-out;
-      }
-
-      @keyframes logo-bounce {
-        0%, 100% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.5)); }
-        50% { transform: scale(1.08); filter: drop-shadow(0 0 35px rgba(59, 130, 246, 0.9)); }
+        transition: opacity 0.5s ease-out;
       }
 
       .scroll-container {
@@ -78,10 +63,7 @@
         flex: 1;
       }
 
-      .custom-scrollbar::-webkit-scrollbar {
-        width: 0px;
-        background: transparent;
-      }
+      .custom-scrollbar::-webkit-scrollbar { width: 0; }
     </style>
   <script type="importmap">
 {
@@ -99,21 +81,17 @@
 </head>
   <body>
     <div id="splash-screen">
-      <div class="logo-pulse relative w-32 h-32 mb-8">
-        <div class="absolute inset-0 bg-blue-600/30 rounded-full blur-3xl animate-pulse"></div>
-        <div class="relative w-full h-full bg-gradient-to-br from-blue-500 to-indigo-700 rounded-[2.5rem] flex items-center justify-center border border-white/20 shadow-2xl overflow-hidden">
-          <span class="text-white text-5xl font-black italic tracking-tighter">K</span>
+      <div class="relative w-24 h-24 mb-6">
+        <div class="absolute inset-0 bg-blue-600/20 rounded-full blur-2xl animate-pulse"></div>
+        <div class="relative w-full h-full bg-gradient-to-br from-blue-500 to-indigo-700 rounded-3xl flex items-center justify-center border border-white/10 shadow-2xl">
+          <span class="text-white text-4xl font-black italic">K</span>
         </div>
       </div>
-      <h2 class="text-white font-black text-4xl tracking-tighter uppercase italic">KINETIX <span class="text-blue-500">PRO</span></h2>
-      <div class="mt-8 flex gap-3">
-        <div class="w-2.5 h-2.5 bg-blue-500 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
-        <div class="w-2.5 h-2.5 bg-blue-500 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
-        <div class="w-2.5 h-2.5 bg-blue-500 rounded-full animate-bounce"></div>
-      </div>
+      <h2 class="text-white font-black text-2xl tracking-tighter uppercase italic">KINETIX <span class="text-blue-500">PRO</span></h2>
+      <p class="text-slate-500 text-[10px] font-bold tracking-[0.3em] mt-2 uppercase">Sport Science Edition</p>
     </div>
 
-    <div id="root" class="app-main"></div>
+    <div id="root"></div>
     
     <script type="module" src="./index.tsx"></script>
     <script>
@@ -122,9 +100,9 @@
           const splash = document.getElementById('splash-screen');
           if (splash) {
             splash.style.opacity = '0';
-            setTimeout(() => splash.style.display = 'none', 600);
+            setTimeout(() => splash.style.display = 'none', 500);
           }
-        }, 1500);
+        }, 1200);
       });
     </script>
   </body>
