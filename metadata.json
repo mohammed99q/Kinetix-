@@ -1,7 +1,5 @@
 {
   "name": "Kinetix Pro",
   "description": "منصة علوم رياضية متكاملة للأداء العالي والتحليل المتقدم، تعمل كبرنامج مستقل تحت اسم Kinetix Pro.",
-  "requestFramePermissions": [
-    "camera"
-  ]
+  "requestFramePermissions": []
 }
